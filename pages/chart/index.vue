@@ -99,8 +99,7 @@
 						})
 					},				
 				]
-				console.log(this.chartData)
-				debugger
+			
 				
 			},
 	
