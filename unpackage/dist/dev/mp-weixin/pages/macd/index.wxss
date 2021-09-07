@@ -1,0 +1,78 @@
+.content.data-v-2390f71e {
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.content .control-bar.data-v-2390f71e {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.content .control-bar .bar-btn.data-v-2390f71e {
+  width: 30%;
+  margin: 5px 5px;
+}
+.content .list-box.data-v-2390f71e {
+  width: 100%;
+  margin: 5px 10px;
+  height: calc(100% - 150px);
+  background-color: #007AFF;
+}
+.content .list-box .list-scoll.data-v-2390f71e {
+  height: 100%;
+  background-color: #efefef;
+}
+.content .list-box .list-scoll .scroll-view-item.data-v-2390f71e {
+  line-height: 20px;
+  background-color: #fff;
+  border-radius: 0px 5px 5px;
+  box-shadow: 2px 2px 2px #ddd;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  justify-items: center;
+}
+.content .list-box .list-scoll .scroll-view-item.red-card.data-v-2390f71e {
+  color: #DD524D;
+}
+.content .list-box .list-scoll .scroll-view-item.green-card.data-v-2390f71e {
+  color: #4CD964;
+}
+.content .list-box .list-scoll .scroll-view-item .item-header.data-v-2390f71e {
+  width: 80px;
+  height: 100%;
+  text-align: center;
+}
+.content .list-box .list-scoll .scroll-view-item .item-body.data-v-2390f71e {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.content .list-box .list-scoll .scroll-view-item .item-body .item-text.data-v-2390f71e {
+  width: 50%;
+  line-height: 30px;
+  text-align: left;
+}
+

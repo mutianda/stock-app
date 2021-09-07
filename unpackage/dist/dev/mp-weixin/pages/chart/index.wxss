@@ -1,0 +1,28 @@
+.content.data-v-9a036210 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.content .chart-kline.data-v-9a036210 {
+  width: 70vw;
+  height: 100vh;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.content .chart-line.data-v-9a036210 {
+  width: 30vw;
+  height: 100vh;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
