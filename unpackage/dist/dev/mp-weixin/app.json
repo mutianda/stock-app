@@ -1,16 +1,17 @@
 {
-  "pages": [
-    "pages/macd/index",
-    "pages/index/index",
-    "pages/chart/index",
-    "pages/echarts/index"
-  ],
-  "subPackages": [],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "禅道",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  },
-  "usingComponents": {}
+    "pages": [
+        "pages/macd/index",
+        "pages/index/index",
+        "pages/chart/index",
+        "pages/echarts/index"
+    ],
+    "subPackages": [],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "禅道",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    },
+    "usingComponents": {},
+    "sitemapLocation": "sitemap.json"
 }

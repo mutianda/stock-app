@@ -90,7 +90,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
-
+    plus.screen.lockOrientation('landscape-primary'); //锁定
   },
   onShow: function onShow() {
     console.log('App Show');

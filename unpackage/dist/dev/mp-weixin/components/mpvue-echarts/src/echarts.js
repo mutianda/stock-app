@@ -167,7 +167,8 @@ var _wxCanvas = _interopRequireDefault(__webpack_require__(/*! ./wx-canvas */ 20
         }
         _this.$emit('onInit', {
           width: res.width,
-          height: res.height });
+          height: res.height,
+          canvas: _this.canvas });
 
       }).
       exec();

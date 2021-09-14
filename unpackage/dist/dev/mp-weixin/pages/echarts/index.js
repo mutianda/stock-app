@@ -141,9 +141,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-
-
-
 var echarts = _interopRequireWildcard(__webpack_require__(/*! @/components/echarts/echarts.min.js */ 201));
 
 var _common = __webpack_require__(/*! ../api/common.js */ 17);function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;} //
@@ -154,10 +151,11 @@ var _common = __webpack_require__(/*! ../api/common.js */ 17);function _getRequi
 //
 //
 //
-//
-//
-//
-var upColor = "#ec0000";var downColor = "#00da3c";var mpvueEcharts = function mpvueEcharts() {Promise.all(/*! require.ensure | components/mpvue-echarts/src/echarts */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvue-echarts/src/echarts")]).then((function () {return resolve(__webpack_require__(/*! @/components/mpvue-echarts/src/echarts.vue */ 204));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { echarts: echarts, shareCode: '', klinechart: null, shareList: [], computeIndex: 0, echart2: null, playing: true, time: null,
+var upColor = "#ec0000";var downColor = "#00da3c";var mpvueEcharts = function mpvueEcharts() {Promise.all(/*! require.ensure | components/mpvue-echarts/src/echarts */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvue-echarts/src/echarts")]).then((function () {return resolve(__webpack_require__(/*! @/components/mpvue-echarts/src/echarts.vue */ 204));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { echarts: echarts, shareCode: '', klineChart: null, barChart: null, shareList: [],
+      computeIndex: 0,
+      echart2: null,
+      playing: true,
+      time: null,
       showModal: false,
       timeLength: 15,
       klineType: "kline",
@@ -176,48 +174,45 @@ var upColor = "#ec0000";var downColor = "#00da3c";var mpvueEcharts = function mp
     mpvueEcharts: mpvueEcharts },
 
   onLoad: function onLoad(option) {
-    console.log(option);
+
     this.shareCode = option.code;
 
   },
   methods: {
-    initklineChart: function initklineChart(e) {var
+    initBarChart: function initBarChart(e) {var
+
+      canvas =
 
 
-      width =
-
-      e.width,height = e.height;
+      e.canvas,width = e.width,height = e.height;
       width = width - 20;
-      var canvas = this.$refs.pieChart.canvas;
       echarts.setCanvasCreator(function () {return canvas;});
-      var klinechart = echarts.init(canvas, null, {
+      var barChart = echarts.init(canvas, null, {
+        width: width,
+        height: height });
+
+      canvas.setChart(barChart);
+      this.barChart = barChart;
+
+    },
+    initKlineChart: function initKlineChart(e) {var
+
+      canvas =
+
+
+      e.canvas,width = e.width,height = e.height;
+      width = width - 20;
+      echarts.setCanvasCreator(function () {return canvas;});
+      var klineChart = echarts.init(canvas, null, {
         width: width,
         height: height });
 
 
+      canvas.setChart(klineChart);
+      this.klineChart = klineChart;
 
-      canvas.setChart(klinechart);
-      this.klinechart = klinechart;
-      // this.klinechart.setOption({
-      // 	 xAxis: {
-      // 	        data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
-      // 	    },
-      // 	    yAxis: {},
-      // 	    series: [{
-      // 	        type: 'candlestick',
-      // 	        data: [
-      // 	            [20, 34, 10,38],
-      // 	            [40, 35, 30, 50],
-      // 	            [31, 38, 33, 44],
-      // 	            [38, 15, 5, 42]
-      // 	        ]
-      // 	    }]
-      // })
-      // this.$refs.pieChart.setChart(this.klinechart)
       this.changeKline();
 
-
-      //return chart
     },
     changeKline: function changeKline() {var _this = this;var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'kline';
       this.currentType = type;
@@ -281,7 +276,7 @@ var upColor = "#ec0000";var downColor = "#00da3c";var mpvueEcharts = function mp
     getData: function getData(rawData, name, macd) {
       var data = this.splitData(rawData);
 
-      this.klinechart.setOption(
+      this.klineChart.setOption(
       {
         animation: false,
         title: {
@@ -539,62 +534,63 @@ var upColor = "#ec0000";var downColor = "#00da3c";var mpvueEcharts = function mp
       true);
 
 
-      this.$refs.pieChart.setChart(this.klinechart);
-      //       this.echart2.setOption(
-      //         {
-      //           xAxis: {
-      //             type: "category",
-      //             data: data.categoryData
-      //           },
+      this.$refs.klineChart.setChart(this.klineChart);
 
-      //           yAxis: [
-      //             {
-      //               type: "value"
-      //             }
-      //           ],
-      //           series: [
-      //             {
-      //               name: "MACD",
-      //               type: "bar",
-      //               itemStyle: {
-      //                 normal: {
-      //                   //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
-      //                   color: function(params) {
-      //                     return params.value > 0 ? "#C1232B" : "#20c107";
-      //                   },
-      //                   //以下为是否显示，显示位置和显示格式的设置了
-      //                   label: {
-      //                     show: false,
-      //                     position: "top",
-      //                     //                             formatter: '{c}'
-      //                     formatter: "{b}\n{c}"
-      //                   }
-      //                 }
-      //               },
-      //               data: macd.macd
-      //             },
-      //             {
-      //               name: "DIF",
-      //               type: "line",
-      //               symbolSize: 1, //拐点圆的大小
-      //               color: ["rgba(255,242,104,0.56)"], //折线条的颜色
-      //               smooth: true, //关键点，为true是不支持虚线的，实线就用true
+      this.barChart.setOption(
+      {
+        xAxis: {
+          type: "category",
+          data: data.categoryData },
 
-      //               data: macd.dif
-      //             },
-      //             {
-      //               name: "DEA",
-      //               type: "line",
-      //               symbolSize: 1, //拐点圆的大小
-      //               color: ["#aaaaaa"], //折线条的颜色
-      //               smooth: true, //关键点，为true是不支持虚线的，实线就用true
-      //               data: macd.dea
-      //             }
-      //           ]
-      //         },
-      //         true
-      //       );
 
+        yAxis: [
+        {
+          type: "value" }],
+
+
+        series: [
+        {
+          name: "MACD",
+          type: "bar",
+          itemStyle: {
+            normal: {
+              //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+              color: function color(params) {
+                return params.value > 0 ? "#C1232B" : "#20c107";
+              },
+              //以下为是否显示，显示位置和显示格式的设置了
+              label: {
+                show: false,
+                position: "top",
+                //                             formatter: '{c}'
+                formatter: "{b}\n{c}" } } },
+
+
+
+          data: macd.macd },
+
+        {
+          name: "DIF",
+          type: "line",
+          symbolSize: 1, //拐点圆的大小
+          color: ["rgba(255,242,104,0.56)"], //折线条的颜色
+          smooth: true, //关键点，为true是不支持虚线的，实线就用true
+
+          data: macd.dif },
+
+        {
+          name: "DEA",
+          type: "line",
+          symbolSize: 1, //拐点圆的大小
+          color: ["#aaaaaa"], //折线条的颜色
+          smooth: true, //关键点，为true是不支持虚线的，实线就用true
+          data: macd.dea }] },
+
+
+
+      true);
+
+      this.$refs.barChart.setChart(this.barChart);
       //       this.echart.on("brushEnd", params => {
       //         console.log(params, "brushEnd"); // 用某种方式输出统计值。
 
