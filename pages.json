@@ -18,6 +18,12 @@
 			"style": {
 				"navigationBarTitleText": "k线图"
 			}
+		},
+		{
+			"path": "pages/echarts/index",
+			"style": {
+				"navigationBarTitleText": "echarts图"
+			}
 		}
 		
 	],

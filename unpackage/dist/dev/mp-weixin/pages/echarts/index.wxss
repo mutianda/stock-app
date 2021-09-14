@@ -1,0 +1,19 @@
+.canvasView.data-v-4c38e554 {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  fflex-direction: row;
+}
+.canvasView .charts1-box.data-v-4c38e554 {
+  height: 100%;
+  width: calc(100% - 300px);
+  opacity: 0.3;
+}
+.canvasView .charts-box.data-v-4c38e554 {
+  height: 100%;
+  width: 300px;
+  opacity: 0.3;
+}
+

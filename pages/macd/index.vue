@@ -19,8 +19,8 @@
 			<button type="warn"      @click="getAllKLine('chaodbl')"
 			 :disabled="beReady && currentType == 'chaodbl'"  size='mini' class="bar-btn">
 			 超背离</button>
-			<input type="number" v-model="lianbanLength" placeholder="请输入内容" :min="1"
-			 :max="10" />
+		<!-- 	<input type="number" v-model="lianbanLength" placeholder="请输入内容" :min="1"
+			 :max="10" /> -->
 		</view>
 		<view class="list-box">
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="list-scoll" @scrolltoupper="upper" @scrolltolower="lower"
@@ -29,6 +29,7 @@
 					:class="item.last.risePrecent>0?'red-card':'green-card'"
 					 @click="lookDetail(item)"
 					>
+						<view class="share-info">
 						<view class="item-header">
 							{{ item.name }} {{ item.last.risePrecent}}%
 						</view>
@@ -40,8 +41,13 @@
 							   <view class="item-text">量能:{{ item.last.volumes }}</view>
 							   <view class="item-text">换手率:{{ item.last.turnover }}%</view>
 							   <view class="item-text">成交额:{{ item.last.moneyString }}</view>
-							</view>
-						</view>		
+						</view>
+						</view>
+					
+					
+					</view>	
+						
+						<!-- <web-view :webview-styles="webviewStyles" :src="'https://onlinestock.cn/html?code='+item.code"></web-view> -->
 			  </scroll-view>
 		</view>
 		
@@ -53,115 +59,15 @@
 	export default {
 		data() {
 			return {
-				macd: "",
+			 macd: "",
+			 webviewStyles: {
+					progress: {
+						color: '#FF3333'
+					}
+				},
 		      lineList: [],
 		      macdList: [],
-		      dblList: [
-				  { 
-						code: "002055",
-						name: "得润电子",
-						  last:{
-							 close: "10.58",
-							 high: "10.60",
-							 low: "10.40",
-							 money: "52306067.00",
-							 open: "10.46",
-							 risePrecent: "1.15",
-							 time: "2021-09-06",
-							 turnover: "1.10",
-							 volumes: "49749",
-						  }
-				  },
-				  {
-						code: "002302",
-						name: "西部建设",
-						  last:{
-							close: "8.66",
-							high: "8.73",
-							low: "8.53",
-							money: "160015869.00",
-							open: "8.55",
-							risePrecent: "0.58",
-							time: "2021-09-06",
-							turnover: "1.47",
-							volumes: "185265",
-						  }
-				  },
-				  {
-				  						code: "002302",
-				  						name: "西部建设",
-				  						  last:{
-				  							close: "8.66",
-				  							high: "8.73",
-				  							low: "8.53",
-				  							money: "160015869.00",
-				  							open: "8.55",
-				  							risePrecent: "0.58",
-				  							time: "2021-09-06",
-				  							turnover: "1.47",
-				  							volumes: "185265",
-				  						  }
-				  },
-				  {
-				  						code: "002302",
-				  						name: "西部建设",
-				  						  last:{
-				  							close: "8.66",
-				  							high: "8.73",
-				  							low: "8.53",
-				  							money: "160015869.00",
-				  							open: "8.55",
-				  							risePrecent: "0.58",
-				  							time: "2021-09-06",
-				  							turnover: "1.47",
-				  							volumes: "185265",
-				  						  }
-				  },
-				  {
-				  						code: "002302",
-				  						name: "西部建设",
-				  						  last:{
-				  							close: "8.66",
-				  							high: "8.73",
-				  							low: "8.53",
-				  							money: "160015869.00",
-				  							open: "8.55",
-				  							risePrecent: "0.58",
-				  							time: "2021-09-06",
-				  							turnover: "1.47",
-				  							volumes: "185265",
-				  						  }
-				  },
-				  {
-				  						code: "002302",
-				  						name: "西部建设",
-				  						  last:{
-				  							close: "8.66",
-				  							high: "8.73",
-				  							low: "8.53",
-				  							money: "160015869.00",
-				  							open: "8.55",
-				  							risePrecent: "0.58",
-				  							time: "2021-09-06",
-				  							turnover: "1.47",
-				  							volumes: "185265",
-				  						  }
-				  }, {
-						code: "002302",
-						name: "西部建设",
-						  last:{
-							close: "8.66",
-							high: "8.73",
-							low: "8.53",
-							money: "160015869.00",
-							open: "8.55",
-							risePrecent: "0.58",
-							time: "2021-09-06",
-							turnover: "1.47",
-							volumes: "185265",
-						  }
-				  }
-			  ],
+		      dblList: [ ],
 		      beReady: false,
 		      searchForm: {
 		        pageSize: 100,
@@ -171,9 +77,9 @@
 		      currentType: "",
 		      lianbanLength: 3,
 			  scrollTop: 0,
-			              old: {
-			                  scrollTop: 0
-			              }
+			  old: {
+				  scrollTop: 0
+			  }
 			}
 		},
 		onLoad() {
@@ -226,7 +132,7 @@
 		    lookDetail(item) {
 				
 				uni.navigateTo({
-						url: '/pages/chart/index?code='+item.code,
+						url: '/pages/echarts/index?code='+item.code,
 					  });
 
 		    },
@@ -261,6 +167,7 @@
 		          this.searchForm.pageNum = res.data.pageNum;
 		          this.searchForm.pageSize = res.data.pageSize;
 		          this.searchForm.total = res.data.total;
+				  this.goTop()
 		        })
 		        .finally(() => {
 		          this.beReady = false;
@@ -276,6 +183,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		// opacity: .3;
 		justify-content: center;
 		.control-bar{
 			display: flex;
@@ -299,33 +207,40 @@
 					border-radius: 0px 5px 5px; 
 					box-shadow: 2px 2px 2px #ddd;
 					margin-bottom: 5px;
-					
-					display: flex;
-					align-items: center;
-					justify-items: center;
 					&.red-card{
 						color: #DD524D;
 					}
 					&.green-card{
 						color: #4CD964;
 					}
-					.item-header{
-						width: 80px;
-						height: 100%;
-						text-align: center;
-						
-					}
-					.item-body{
-						flex: 1;
+					.share-info{
+						width: 100%;
 						display: flex;
-						flex-wrap: wrap;
-						
-						.item-text{
-							width: 50%;
-							line-height: 30px;
-							text-align: left;
+						align-items: center;
+						justify-items: center;
+						.item-header{
+							width: 80px;
+							height: 100%;
+							text-align: center;
 							
 						}
+						.item-body{
+							flex: 1;
+							display: flex;
+							flex-wrap: wrap;
+							
+							.item-text{
+								width: 50%;
+								line-height: 30px;
+								text-align: left;
+								
+							}
+						}
+					}
+					
+					.web-view{
+						height: 300px;
+						transform: rotate(90deg);
 					}
 					
 				}

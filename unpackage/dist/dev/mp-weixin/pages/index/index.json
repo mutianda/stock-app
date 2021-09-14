@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "领取中心",
-  "usingComponents": {
-    "qiun-data-charts": "/components/qiun-data-charts/qiun-data-charts"
-  }
+  "usingComponents": {}
 }

@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/qiun-data-charts/qiun-data-charts":1,"components/qiun-error/qiun-error":1,"components/qiun-loading/loading1":1,"components/qiun-loading/loading2":1,"components/qiun-loading/loading3":1,"components/qiun-loading/loading4":1,"components/qiun-loading/loading5":1};
+/******/ 		var cssChunks = {"components/mpvue-echarts/src/echarts":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/qiun-data-charts/qiun-data-charts":"components/qiun-data-charts/qiun-data-charts","components/qiun-error/qiun-error":"components/qiun-error/qiun-error","components/qiun-loading/qiun-loading":"components/qiun-loading/qiun-loading","components/qiun-loading/loading1":"components/qiun-loading/loading1","components/qiun-loading/loading2":"components/qiun-loading/loading2","components/qiun-loading/loading3":"components/qiun-loading/loading3","components/qiun-loading/loading4":"components/qiun-loading/loading4","components/qiun-loading/loading5":"components/qiun-loading/loading5"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/mpvue-echarts/src/echarts":"components/mpvue-echarts/src/echarts"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

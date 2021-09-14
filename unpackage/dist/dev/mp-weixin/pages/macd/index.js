@@ -197,6 +197,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 var _common = __webpack_require__(/*! ../api/common.js */ 17); //
 //
 //
@@ -247,114 +253,14 @@ var _common = __webpack_require__(/*! ../api/common.js */ 17); //
 //
 //
 //
-var _default = { data: function data() {return { macd: "", lineList: [], macdList: [], dblList: [{ code: "002055", name: "得润电子", last: { close: "10.58", high: "10.60", low: "10.40", money: "52306067.00", open: "10.46", risePrecent: "1.15", time: "2021-09-06", turnover: "1.10", volumes: "49749" } }, { code: "002302", name: "西部建设", last: { close: "8.66", high: "8.73", low: "8.53", money: "160015869.00", open: "8.55", risePrecent: "0.58", time: "2021-09-06", turnover: "1.47", volumes: "185265" } }, { code: "002302", name: "西部建设", last: { close: "8.66", high: "8.73", low: "8.53", money: "160015869.00", open: "8.55", risePrecent: "0.58", time: "2021-09-06", turnover: "1.47", volumes: "185265" } },
-
-
-      {
-        code: "002302",
-        name: "西部建设",
-        last: {
-          close: "8.66",
-          high: "8.73",
-          low: "8.53",
-          money: "160015869.00",
-          open: "8.55",
-          risePrecent: "0.58",
-          time: "2021-09-06",
-          turnover: "1.47",
-          volumes: "185265" } },
-
-
-      {
-        code: "002302",
-        name: "西部建设",
-        last: {
-          close: "8.66",
-          high: "8.73",
-          low: "8.53",
-          money: "160015869.00",
-          open: "8.55",
-          risePrecent: "0.58",
-          time: "2021-09-06",
-          turnover: "1.47",
-          volumes: "185265" } },
-
-
-      {
-        code: "002302",
-        name: "西部建设",
-        last: {
-          close: "8.66",
-          high: "8.73",
-          low: "8.53",
-          money: "160015869.00",
-          open: "8.55",
-          risePrecent: "0.58",
-          time: "2021-09-06",
-          turnover: "1.47",
-          volumes: "185265" } },
-
-      {
-        code: "002302",
-        name: "西部建设",
-        last: {
-          close: "8.66",
-          high: "8.73",
-          low: "8.53",
-          money: "160015869.00",
-          open: "8.55",
-          risePrecent: "0.58",
-          time: "2021-09-06",
-          turnover: "1.47",
-          volumes: "185265" } }],
-
-
-
-      beReady: false,
-      searchForm: {
-        pageSize: 100,
-        pageNum: 1,
-        total: 0 },
-
-      currentType: "",
-      lianbanLength: 3,
-      scrollTop: 0,
-      old: {
-        scrollTop: 0 } };
-
-
-  },
-  onLoad: function onLoad() {
-    // this.getUserInfo()
-  },
-  computed: {
-    shareList: function shareList() {
-      var arr = this.dblList.
-      sort(function (a, b) {return b.last.risePrecent - a.last.risePrecent;}).
-      map(function (item) {
-        item.last.moneyString =
-        item.last.money / 100000000 > 1 ?
-        Math.floor(item.last.money / 100000000, 2) + "亿" :
-        Math.floor(item.last.money / 10000, 2) + "万";
-
-        return item;
-      });
-
-      return arr;
-    } },
-
-  methods: {
-    upper: function upper(e) {
-      console.log(e);
-    },
-    lower: function lower(e) {
-      console.log(e);
-    },
-    scroll: function scroll(e) {
-      console.log(e);
-      this.old.scrollTop = e.detail.scrollTop;
-    },
-    goTop: function goTop(e) {var _this = this;
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { macd: "", webviewStyles: { progress: { color: '#FF3333' } }, lineList: [], macdList: [], dblList: [], beReady: false, searchForm: { pageSize: 100, pageNum: 1, total: 0 }, currentType: "", lianbanLength: 3, scrollTop: 0, old: { scrollTop: 0 } };}, onLoad: function onLoad() {// this.getUserInfo()
+  }, computed: { shareList: function shareList() {var arr = this.dblList.sort(function (a, b) {return b.last.risePrecent - a.last.risePrecent;}).map(function (item) {item.last.moneyString = item.last.money / 100000000 > 1 ? Math.floor(item.last.money / 100000000, 2) + "亿" : Math.floor(item.last.money / 10000, 2) + "万";return item;});return arr;} }, methods: { upper: function upper(e) {console.log(e);}, lower: function lower(e) {console.log(e);}, scroll: function scroll(e) {console.log(e);this.old.scrollTop = e.detail.scrollTop;}, goTop: function goTop(e) {var _this = this;
       this.scrollTop = this.old.scrollTop;
       this.$nextTick(function () {
         _this.scrollTop = 0;
@@ -374,7 +280,7 @@ var _default = { data: function data() {return { macd: "", lineList: [], macdLis
     lookDetail: function lookDetail(item) {
 
       uni.navigateTo({
-        url: '/pages/chart/index?code=' + item.code });
+        url: '/pages/echarts/index?code=' + item.code });
 
 
     },
@@ -409,6 +315,7 @@ var _default = { data: function data() {return { macd: "", lineList: [], macdLis
         _this2.searchForm.pageNum = res.data.pageNum;
         _this2.searchForm.pageSize = res.data.pageSize;
         _this2.searchForm.total = res.data.total;
+        _this2.goTop();
       }).
       finally(function () {
         _this2.beReady = false;

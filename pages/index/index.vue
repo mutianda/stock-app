@@ -9,7 +9,6 @@
 		
 		 <button type="primary" @click="getUserInfo()" size="mini">获取信息</button>
 	      <button type="primary" open-type="getPhoneNumber" @getphonenumber="decryptPhoneNumber" size="mini">点击绑定</button>
-		  <qiun-data-charts type="candle" :chartData="chartData" style="width: 100%;height: 500rpx;"/>
 	</view>
 </template>
 
